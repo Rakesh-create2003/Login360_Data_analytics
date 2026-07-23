@@ -1,0 +1,538 @@
+TABLE:
+
+IT USED TO STORE DATA IN A ROWS AND COLUMNS
+
+
+DATA BASE:
+ IT USED TO STORE COLLECTION OF DATA(HUGE AMOUNT) IN A ORGANISED WAY
+
+TYPES --> DBMS & RDMBS
+
+DBMS - DATABASE MANAGEMENT SYTSEM 
+
+IT IS USED TO STORE DATA IN A TEXT OR FILE FORMAT(XML,TXT,MS ACCESS)
+
+IT IS HARD TO FETCH THE DATA.
+
+LESS SECURED
+
+==>NOSQL,MONGO DB
+
+EX: A CUPBOARD WITHOUT SELVES
+
+RDBMS - RELATIONAL DATABASE MANAGEMENT SYTSEM 
+
+IT IS THE ADVANCED VERSION DBMS. RELATION MEANS TABLE.
+
+IT IS USED TO STORE DATA IN A TABLE FORMAT
+
+IT IS EASY TO FETCH THE DATA.
+
+MORE SECURED
+
+==>MY SQL,ORACLE,POSTGRESQL
+
+EX: A CUPBOARD WITH SELVES
+
+
+
+
+SQL
+
+STRUCTURED QUERY LANGUAGE. IT IS THE PROGRAMMING LANGUAGE USED TO ACCES AND MANIPULATE THE DATABASE.
+
+
+5 TYPES OF SQL COMMANDS
+
+DDL(DATA DEFINTION LANGUAGE)     - CREATE,DROP,ALTER,TRUNCATE
+DML(DATA MANIPULATION LANGUAGE)  - INSERT,UPDATE,DELETE
+DQL(DATA QUERY LANGUAGE)         -SELECT
+DCL(DATA CONTROL LANGUAGE)       -GRAND ,REVOKE
+TCL(TRANSACTION CONTROL LANGUAGE)-COMMIT,ROLLBACK,SAVEPOINT
+
+DATA TYPES IN SQL:
+
+
+NUMBER
+  1)INT   - WHOLE
+  2)DECIMAL(PRECISION,SCALE) Decimal(6,2) - FLOAT   1234.00,12.00     123456.00
+
+TEXT 
+  1)CHAR()    - CHAR(20) -FIXED MEMORY LENGTH  - CHAR(4) - 'HARI' ,ABI_
+  2)VARCHAR() -VARCHAR(20) -VARIABLE MEMORY LENGTH- CHAR(4) 
+
+DATE      - 'YYYY-MM-DD'
+
+LARGE OBJECT - SIZE ABOVE 2000 BYTES
+    1)CLOB-CHARACTER LARGE OBJECT(PDF,DOC,TEXT,WORD)
+    2)BLOB-BINARY LARGE OBJECT(IMAGE,VIDEO,AUDIO)
+
+
+DATABASE CREATION:
+
+syntax:
+create database database_name;
+use database_name;
+
+example:
+create database login;
+use login;
+
+
+TABLE CREATION:
+
+create table table_name(column1 datatype,column2 datatype...)
+
+create table das(name varchar(20),age int,location varchar(20),dep varchar(20),marks int);
+
+VALUES INSERTION:
+
+SYNTAX:
+insert into table_name(column1,column2...) values (v1,v2..),(v1,v2..)
+
+EXAMPLE:
+insert into das(name,age,location,dep,marks)values('hari',23,'chennai','tamil',67),('sanjai',21,'madurai','english',98)
+
+SYNTAX:
+
+insert into tablename values(v1,v2..);
+insert into tablename values(v1,v2..);
+insert into tablename values(v1,v2..);
+
+EXAMPLE:
+
+insert into das values("hari",21,"chennai","tam",89);
+insert into das values("Praveen",23,"madurai","cs",90);
+
+
+SELECT:
+
+It is used to retrieve the data from the table
+
+SYNTAX:
+
+SELECT COLUMNAME FROM TABLENAME
+
+EXAMPLE:
+
+select name from das;--->single column
+select name,age from das;--->multiple columns
+select * from das ---->all columns
+
+
+
+
+distinct:
+
+it is used to fetch different values from the table
+
+syntax:
+select distinct(columname) from tablename
+
+example:
+select distinct(location) from emp
+
+
+
+
+
+
+where 
+
+it is used to filter the records based on specific condition
+
+SYNTAX:
+select columname from tablename where condition;
+
+EXAMPLE:
+
+select * from das where name="hari";
+
+AND:
+
+select * from das where location="Chennai" and name="hari"
+
+OR:
+select * from das where location="Chennai" and name="hari"
+
+
+IN OPERATOR:
+ 
+it is used to fetch the records based on multiple values
+
+SYNTAX:
+
+select columname from tablename where columnname in(v1,v2..,)
+select columname from tablename where columnname not in(v1,v2..,)
+
+select * from das where location in ("Madurai","Chennai","salem")
+
+
+BETWEEN
+
+it is used to fetch the records based on certain range
+
+SYNTAX:
+
+select columname from tablename where columname between v1 and v2;
+
+EXAMPLE:
+
+select * from das where salary between 1000 and 5000;
+
+select * from das where salary not between 1000 and 5000;
+
+
+ISNULL
+
+
+It is used to fetch the records with null values
+
+SYNTAX:
+
+Select columname from tablename where columname is null;
+
+EXAMPLE:
+
+select * from tablename where salary is null;
+
+select * from tablename where salary is not null;
+
+
+LIKE :
+it is used to fetch the records based on specific pattern matching
+
+wildcards:
+
+   %  - any chr any no of time
+   _  - any chr only one time
+
+
+s% - first chr s
+
+%s - last chr s
+
+_s% - second chr s
+
+%s_ - last before chr s
+
+__s% - third chr s
+
+%s% - middle s
+
+%s_s% -alternative s
+
+%ss% - continuous s
+
+
+
+SYNTAX:
+
+select columname from table where columname like 'pattern'
+
+EXAMPLE:
+
+select name from das where name like 'm%';
+
+select name from das where name not like 'm%';
+
+DELETE :
+IT IS USED TO DELETE THE PARTICULAR RECORDS IN THE TABLE USING CONDITION
+
+SYNATX:
+DELETE FROM TABLENAME WHERE CONDITION
+
+EXAMPLE:
+Delete from students where id=1;
+
+
+UPDATE:
+
+It is used to modify the existing records in a table
+
+SYNTAX:
+
+Update tablename set columname=value where condition;
+
+update employee set location="Madurai" where name="hari"
+
+ORDER BY:
+
+It is used to sort the results in ascending or descending order.
+The default order method is ascending order.
+
+SYNTAX:
+
+select columname from tablename order by columnname asc/desc;
+
+
+EXAMPLE:
+
+select * from employee order by salary desc;
+
+
+AGGREGATE FUNCTIONS:
+
+It performs with multiple values in a columns and returns the single output
+
+sum() - returns total values
+min() - returns minimum value
+max() -returns maximum value
+avg() -returns mean value
+count() -returns number of value
+
+SYNTAX:
+
+select agg(columname) from tablename where condition.
+
+EXAMPLE:
+
+select sum(salary) from employee;
+select count(*) from employee:
+
+GROUP BY:
+
+It is used to grouping the records based on same values in a column.
+It is always works with aggregate functions.
+
+SYNTAX:
+select agg(columname) from tablename where condition group by columname;
+
+EXAMPLE: Find total salary of each location.
+
+select sum(salary),location from employee group by location;
+
+Find total salary of each location whose dep is hr
+
+select sum(salary),location from employee where dep="HR" group by location having sum(salry) >5000;
+
+Chennai   hr  3000
+Madurai   he   4000
+salem   he     7000
+
+
+HAVING:
+
+It is used to filter the group by records.
+
+it always works with group by clause
+
+SYNTAX:
+select agg(columname) from tablename where condition group by columname having condition
+
+EXAMPLE:
+find total salary of hr in each location whose total salary is greater than 500
+   
+select sum(sal) from emp where pos='hr" group by location having sum(sal) >500;
+
+
+find number of employees in each dep,which ep has more than 3 employees
+   
+select count(name) from emp group by dep having count(name)>3;
+
+
+SUBQUERIES:
+
+A query inside the another query is called subquery.It also known as nested query.
+A inner query will be excecuted first then the outer query will be excecuted.
+
+
+
+HARI  200  TAM  23
+ABI   300  ENG  24
+RAM   400  TAM   25
+
+FIND STUDENT WHO STUDIED IN HARI'S DEPARTMENT
+
+SELECT NAME FROM STUD WHERE DEP=(SELECT DEP FROM STUD WHERE NAME ="HARI)
+
+
+LIMIT
+
+it is used to fetch the number of rows from the table
+
+SYNTAX
+Select columnname from tablename limit no.of.rows
+
+EXAMPLE:
+to fetch first 10 rows
+select name from emp limit 10;
+
+to find top 10 salary in table
+select * from emp order by salary desc limit 1;
+
+OFFSET;
+
+it is used to skip the number of rows
+it always work with limit
+
+SYNTAX:
+
+select columname from tablename limit no.of.rows offset no.of.rows
+
+Example:
+find fifth max salary salary
+select salary from emp order by salary desc limit 1 offset 4;
+
+
+
+
+
+=
+
+
+ 
+
+student
+
+id name
+101  abi
+102  hari
+
+create table emp(id int primary key,name varchar(20) not null)
+
+
+department
+
+101  eng d1
+102  tam d2
+
+create table dep(dep id primary key,id int,dep varchar(20) not null,foreign key(id) references emp(id));
+
+
+
+
+
+
+delete:
+
+it is used to delete particular row.
+
+syntax:
+delete from tablename where condition;
+
+example
+delete from emp where name="hari"
+
+drop:
+
+it is used to delete entire table or database
+
+syntax:
+
+drop database databasename;
+
+drop table tablename;
+
+
+
+truncate:
+
+it deletes all the rows in the table but the table structure remains constant.
+
+syntax:
+
+truncate table tablename;
+
+alter 
+
+it is used to modify the structure of the table
+
+i)add new colum
+
+syntax:
+
+alter table tablename add column columname datatype;
+
+example:
+alter table emp add column gender varchar(20);
+
+ii)delete column
+
+syntax:
+
+alter table tablename drop column columname;
+
+example:
+alter table emp drop column gender;
+
+iii)change data type
+syntax:
+alter table tablename modify columname newdatatype;
+
+example:
+alter table emp modify name varchar(10);
+
+iv)rename column:
+
+syntax:
+
+alter table tablename change oldcolumname newcolumname newdatatype;
+
+example:
+alter table emp change name employee_name varchar(20);
+
+iv)rename tablename
+
+syntax:
+rename table oldname to newname
+
+example:
+rename table employee to empl;
+
+
+
+
+
+
+
+
+ALTER Command in MySQL Workbench
+
+The ALTER command is used to modify an existing table structure without deleting the table.
+
+1️⃣ Add a New Column
+ALTER TABLE table_name
+ADD column_name datatype;
+
+
+Example:
+
+ALTER TABLE employees
+ADD salary INT;
+
+2️⃣ Add Multiple Columns
+ALTER TABLE table_name
+ADD column1 datatype,
+ADD column2 datatype;
+
+3️⃣ Modify Column Datatype / Size
+ALTER TABLE table_name
+MODIFY column_name new_datatype;
+
+
+Example:
+
+ALTER TABLE employees
+MODIFY salary DECIMAL(10,2);
+
+4️⃣ Change Column Name
+ALTER TABLE table_name
+CHANGE old_column new_column datatype;
+
+
+Example:
+
+ALTER TABLE employees
+CHANGE name full_name VARCHAR(50);
+
+5️⃣ Rename Table
+ALTER TABLE old_table_name
+RENAME TO new_table_name;
+
+6️⃣ Drop (Delete) a Column
+ALTER TABLE table_name
+DROP column_name;
+
+
+
